@@ -26,6 +26,9 @@ This project serves as a foundational implementation of a Windows-based enterpri
 ![Installing AD](images/installingAD.png)
 ![AD Part 2](images/isntallingADpart2.png)
 ![AD Config](images/ActiveDirectoryDomainServicesConfigurationWizard.png)
+* **DNS Delegation Note:** During the DNS setup, you may encounter a warning regarding "DNS delegation." 
+  * **What it does:** It informs you that the parent zone cannot be automatically found or delegated.
+  * **Why it is not an issue:** In an isolated virtual machine environment (a lab), this is expected behavior. It only matters if you were integrating this DNS server with an existing, large-scale enterprise DNS infrastructure. For our `lab.local` domain, no further action is required, and this warning does not affect the functionality of the domain controller.
 ![Check Before](images/checkbeforeinstallation.png)
 ![New Forest](images/addnewforest.png)
 ![AD in Tools](images/activedirectoryintools.png)

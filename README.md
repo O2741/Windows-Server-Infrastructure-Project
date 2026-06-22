@@ -31,6 +31,7 @@ This project serves as a foundational implementation of a Windows-based enterpri
   * **Why it is not an issue:** In an isolated virtual machine environment (a lab), this is expected behavior. It only matters if you were integrating this DNS server with an existing, large-scale enterprise DNS infrastructure. For our `lab.local` domain, no further action is required, and this warning does not affect the functionality of the domain controller.
 ![Check Before](images/checkbeforeinstallation.png)
 ![New Forest](images/addnewforest.png)
+* **Verification of Installation:** After successfully installing AD DS, the Active Directory tools become available in the Server Manager "Tools" menu.
 ![AD in Tools](images/activedirectoryintools.png)
 ![DNS Setup](images/settingupdns.png)
 ![DNS Forwarder](images/dnsforward.png)

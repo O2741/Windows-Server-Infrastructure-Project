@@ -15,19 +15,19 @@ To build a reliable network, we utilized the following core configurations:
 ### 1. Operating System Installation
 We began with a clean installation of Windows Server.
 * **Why:** A fresh installation ensures no pre-existing software conflicts or security loopholes. It creates a stable, high-performance foundation.
-![Installing OS](images/Installing_Windows_Server.png)
+![Installing OS](images/InstallingWindowsServer.png)
 
 ### 2. Static IP Configuration
 The server was assigned a static IP address of `192.168.1.10`.
 * **Why:** Services like a Domain Controller must be reliable. If the IP address were dynamic, it could change, causing clients to lose connection. A static IP ensures constant availability.
-![Static IP](images/static_ip_configuration.png)
+![Static IP](images/staticipconfiguration.png)
 
 ### 3. Deploying AD DS and DNS
 Active Directory and DNS roles were installed to enable centralized management.
 * **Why (AD DS):** This provides the framework for identity management (users, groups, and permissions).
-![Installing AD](images/isntalling_ad_part_2.png)
+![Installing AD](images/isntallingadpart2.png)
 * **Why (DNS):** AD DS requires DNS to map domain names to specific servers. Without it, clients cannot locate the Domain Controller.
-![Setting up DNS](images/setting_up_dns.png)
+![Setting up DNS](images/settingupdns.png)
 
 ### 4. User Account Management
 We created a user profile for "John Miller" inside the `IT_Service` organizational unit.

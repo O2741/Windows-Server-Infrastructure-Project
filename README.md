@@ -26,10 +26,12 @@ This project serves as a foundational implementation of a Windows-based enterpri
 ![Installing AD](images/installingAD.png)
 ![AD Part 2](images/isntallingADpart2.png)
 ![AD Config](images/ActiveDirectoryDomainServicesConfigurationWizard.png)
+
 * **DNS Delegation Note:** During the DNS setup, you may encounter a warning regarding "DNS delegation." 
   * **What it does:** It informs you that the parent zone cannot be automatically found or delegated.
   * **Why it is not an issue:** In an isolated virtual machine environment (a lab), this is expected behavior. It only matters if you were integrating this DNS server with an existing, large-scale enterprise DNS infrastructure. For our `lab.local` domain, no further action is required, and this warning does not affect the functionality of the domain controller.
 ![Check Before](images/checkbeforeinstallation.png)
+
 * **Deployment Configuration:** We selected "Add a new forest" and defined the root domain as `lab.local`.
     * **What it does:** Creates the primary container (forest) and defines the DNS namespace for the entire network.
     * **Why it is necessary:** This establishes the root of the identity hierarchy, ensuring all network resources can be uniquely identified via FQDN.
@@ -37,6 +39,10 @@ This project serves as a foundational implementation of a Windows-based enterpri
 
 * **Verification of Installation:** After successfully installing AD DS, the Active Directory tools become available in the Server Manager "Tools" menu.
 ![AD in Tools](images/activedirectoryintools.png)
+
+* **DNS Management & Zone Configuration:**
+    * **What it does:** DNS Manager handles "Forward Lookup Zones" to resolve device names to IP addresses.
+    * **Why it is necessary:** DNS acts as the "phonebook" for AD DS. Without it, clients cannot locate the Domain Controller for authentication.
 ![DNS Setup](images/settingupdns.png)
 ![DNS Forwarder](images/dnsforward.png)
 

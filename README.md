@@ -9,8 +9,8 @@ This project serves as a foundational implementation of a Windows-based enterpri
 **Description:** We began with a clean installation of Windows Server to ensure a stable, high-performance base.
 * **What it does:** Sets up the core operating environment and kernel services.
 * **Why it is necessary:** A fresh installation eliminates configuration drift, providing a predictable foundation for enterprise services.
-![OS Installed](images/fullyinstalledandloadedVMwithWindowsserver.png)
 ![OS Setup](images/InstallingWindowsServer.png)
+![OS Installed](images/fullyinstalledandloadedVMwithWindowsserver.png)
 
 ## 2. Static IP Configuration
 **Description:** The server was manually configured with a static IP address.

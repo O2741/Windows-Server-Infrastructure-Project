@@ -25,7 +25,7 @@ This project serves as a foundational implementation of a Windows-based enterpri
 * **Why it is necessary:** DNS is the "phonebook" of the network; without it, clients cannot locate the Domain Controller for authentication.
 ![Installing AD](images/installingAD.png)
 ![AD Part 2](images/isntallingADpart2.png)
-![AD Config](images/ActiveDirectoryDomainServicesConfigur.png)
+![AD Config](images/ActiveDirectoryDomainServicesConfigurationWizard.png)
 ![Check Before](images/checkbeforeinstallation.png)
 ![New Forest](images/addnewforest.png)
 ![AD in Tools](images/activedirectoryintools.png)

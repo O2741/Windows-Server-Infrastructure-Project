@@ -1,71 +1,63 @@
 # Infrastructure Project: Windows Server Domain Controller Deployment
 
 ## Project Overview
-This project serves as a foundational implementation of a Windows-based enterprise network environment. The primary objective is to build a centralized management system that allows administrators to control user identities, network resources, and security policies from a single point of authority. This type of infrastructure is the backbone of most corporate IT environments.
-
-## Infrastructure Strategy & Rationale
-To build a professional, scalable, and secure environment, we implemented the following core components:
-
-* **Static IP Addressing:** Unlike home networks, servers require a **static** address. 
-  * *Purpose:* To ensure that network clients can reliably locate the server at the same address 24/7. Without a static IP, service disruptions would occur if the address changed.
-* **Active Directory Domain Services (AD DS):** The central database for user identities.
-  * *Purpose:* Establishes a "Single Source of Truth." This allows administrators to manage permissions and access policies across the entire network from one location.
-* **DNS (Domain Name System):** The network's phonebook.
-  * *Purpose:* AD DS relies entirely on DNS to function. When a client tries to log in, it queries the DNS to find the Domain Controller's location. Without DNS, authentication is impossible.
-* **Organizational Units (OU):** Logical containers (e.g., `IT_Service`).
-  * *Purpose:* Allows for granular administrative delegation and specific policy (GPO) application to groups of users.
+This project serves as a foundational implementation of a Windows-based enterprise network, building a centralized system for user identity and security policy management.
 
 ---
 
-## Environment Setup & Installation
-
-### 1. Operating System Installation
-We began with a clean installation of Windows Server.
-* **Why:** A fresh OS installation ensures a stable, high-performance foundation, free from configuration drift or legacy software conflicts.
+## 1. Operating System Installation
+**Description:** We began with a clean installation of Windows Server to ensure a stable, high-performance base.
+* **What it does:** Sets up the core operating environment and kernel services.
+* **Why it is necessary:** A fresh installation eliminates configuration drift and security loopholes, providing a predictable foundation for enterprise services.
 ![Installing OS](images/InstallingWindowsServer.png)
 
-### 2. Static IP Configuration
-The server was assigned a static IP (`192.168.1.10`).
+## 2. Static IP Configuration
+**Description:** The server was manually configured with a static IP address of `192.168.1.10`.
+* **What it does:** Assigns a fixed network address that does not change upon reboot.
+* **Why it is necessary:** Servers must remain reachable at a consistent location; dynamic IPs would cause service disruptions for clients relying on the Domain Controller.
 ![Static IP Setup](images/staticipconfiguration.png)
-![Network Properties](images/networkpropertiesadditional.png)
+![Network Properties](images/network_properties_additional.png)
 
-### 3. Deploying AD DS and DNS
-Active Directory and DNS roles were installed to enable centralized management.
-* **AD DS Installation:** Establishing the directory service for identity management.
+## 3. AD DS and DNS Deployment
+**Description:** We installed the Active Directory Domain Services and DNS server roles.
+* **What it does:** AD DS centralizes identity management, while DNS maps domain names to server IPs.
+* **Why it is necessary:** DNS is the "phonebook" of the network; without it, clients cannot locate the Domain Controller for authentication.
 ![AD Init](images/isntallingadpart2.png)
-![AD Progress](images/adprogressdetails.png)
-![AD Finished](images/adfinishednotification.png)
-* **DNS Configuration:** Mapping domain names to specific servers.
+![AD Progress](images/ad_progress_details.png)
+![AD Finished](images/ad_finished_notification.png)
 ![DNS Tool](images/settingupdns.png)
-![DNS Zone Config](images/dnszonesetup.png)
+![DNS Zone Config](images/dns_zone_setup.png)
 
----
+## 4. Firewall and Security Logging
+**Description:** Adjusted firewall policies to permit network traffic for auditing purposes.
+* **What it does:** Opens necessary ports to allow network probes and Nmap scans to reach the host.
+* **Why it is necessary:** Allows Sysmon to capture and generate Event ID 3 (Network Connection) logs, which are vital for security monitoring.
+![Firewall Config](images/firewall_adjustment.png)
 
-## User Management Workflow
-We created a user profile for "John Miller" inside the `IT_Service` Organizational Unit (OU).
-
-### Step 1: Adding a New User
-Defining user identity to allow controlled access.
+## 5. User Account Creation
+**Description:** Created a new user profile for "John Miller" within the `IT_Service` Organizational Unit.
+* **What it does:** Provisions a new identity object in the directory database.
+* **Why it is necessary:** Enables granular access control and administrative delegation based on organizational roles.
 ![User Part 1](images/userpart1.png)
-![User Account Details](images/userdetailsinput.png)
-![User Login Setup](images/userloginsetup.png)
+![User Account Details](images/user_details_input.png)
+![User Login Setup](images/user_login_setup.png)
 
-### Step 2: Password Security
-We enforced a "Change password at next logon" policy.
-* **Why:** This ensures the administrator never knows the user's permanent password, maintaining security accountability.
+## 6. Password Security Policy
+**Description:** Enforced the "User must change password at next logon" setting.
+* **What it does:** Requires the user to define their own private credentials upon first access.
+* **Why it is necessary:** Ensures the administrator never knows the user's password, maintaining account integrity and individual accountability.
 ![Password Policy](images/userpart2.png)
-![Password Confirmation](images/passwordconfirmdialog.png)
+![Password Confirmation](images/password_confirm_dialog.png)
 
-### Step 3: Object Review & Verification
-Reviewing and finalizing the user object within the directory.
+## 7. Verification and Final Review
+**Description:** Final check of the user object and Organizational Unit structure.
+* **What it does:** Validates that the user is correctly registered and subject to group policies.
+* **Why it is necessary:** Confirms the infrastructure is correctly configured and ready for production use.
 ![Review Setup](images/userpart3.png)
-![Final Object Verification](images/objectreviewfinal.png)
-
-### Step 4: Final Verification
-Confirming the user is correctly registered in the `IT_Service` OU.
+![Final Object Verification](images/object_review_final.png)
 ![User Created](images/useradded.png)
-![OU Overview](images/ouitserviceview.png)
-![Final Domain State](images/finaldomainstate.png)
+![OU Overview](images/ou_it_service_view.png)
+![Final Domain State](images/final_domain_state.png)
 
 ---
-*This setup provides a centralized, secure, and manageable IT foundation.*
+*This configuration establishes a secure, centralized, and manageable IT foundation.*

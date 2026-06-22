@@ -33,9 +33,9 @@ This project serves as a foundational implementation of a Windows-based enterpri
 ![DNS Forwarder](images/dnsforward.png)
 
 ## 4. User Account Management
-**Description:** Structured the directory environment and created a new user profile.
-* **What it does:** Provisions organizational units and user identity objects.
-* **Why it is necessary:** Enables granular access control and administrative delegation based on organizational roles.
+**Description:** We created an `IT_Service` Organizational Unit (OU) and provisioned a new user profile for "John Miller" within it.
+* **What it does:** Organizes the directory structure and assigns a specific user identity to the IT department group.
+* **Why it is necessary:** Enables granular access control and ensures that specific security policies are applied directly to the IT administrative group.
 ![Adding OU](images/addingorganisationalunit.png)
 ![Add User](images/addinguser.png)
 ![User Part 1](images/userpart1.png)
